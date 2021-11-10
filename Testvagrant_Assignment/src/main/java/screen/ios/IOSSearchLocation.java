@@ -7,4 +7,9 @@ public class IOSSearchLocation implements SearchLocationAbstract {
     public boolean searchLocation() {
         return false;
     }
+
+    @Override
+    public boolean selectCityFromTheListAppeared() {
+        return false;
+    }
 }

@@ -6,4 +6,5 @@ package screen.abstractScreen;
 public interface SearchLocationAbstract {
 
     public abstract boolean searchLocation();
+    public abstract boolean selectCityFromTheListAppeared();
 }
