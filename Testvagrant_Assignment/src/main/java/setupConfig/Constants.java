@@ -5,4 +5,7 @@ package setupConfig;
  */
 public interface Constants {
 
+    public static final int timeInSeconds = 30;
+    public static final String cityName = "Nagpur";
+    public static final String state = "Maharashtra";
 }
