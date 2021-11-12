@@ -5,7 +5,9 @@ package setupConfig;
  */
 public interface Constants {
 
-    public static final int timeInSeconds = 30;
-    public static final String cityName = "Nagpur";
-    public static final String state = "Maharashtra";
+    public static final int TIME_IN_SECONDS = 30;
+    public static final String CITY_NAME = "Nagpur";
+    public static final String STATE = "Maharashtra";
+    public static String TEMPERATURE_TYPE = "FahrenheitToCelsius";
+    public static int STATUS_CODE_SUCCESS = 200;
 }

@@ -117,7 +117,7 @@ public class BasePageObject {
     public boolean enterTextIntoTextBox(final By locator, String textData) {
         boolean isTextEntered = false;
         try {
-            waitForElementToPresent(locator, Constants.timeInSeconds);
+            waitForElementToPresent(locator, Constants.TIME_IN_SECONDS);
             webElement(locator).clear();
             webElement(locator).sendKeys(textData);
             isTextEntered = true;
@@ -196,6 +196,27 @@ public class BasePageObject {
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
+    }
+
+    public float temperatureConversion(String tempType, String temp){
+        float Fahrenheit, Celsius, tempConversion;
+        tempConversion = Float.parseFloat(temp);
+
+        switch(tempType) {
+            case "FahrenheitToCelsius":
+                Celsius = ((tempConversion-32)*5)/9;
+                logger.info("Temperature in degree celsius is: "+Celsius);
+                tempConversion = Celsius;
+                break;
+            case "CelsiusToFahrenheit":
+                Fahrenheit =((tempConversion*9)/5)+32;
+                logger.info("Temperature in Fahrenheit is: "+Fahrenheit);
+                tempConversion = Fahrenheit;
+                break;
+            default:
+                logger.info("Please provide valid temperature conversion type : "+tempType);
+        }
+        return tempConversion;
     }
 
 }

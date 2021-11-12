@@ -18,6 +18,7 @@ public class WeatherTestStepDefinition extends BasePageObject {
     public void setUp(){
         initialization();
     }
+
     @After
     public void tearDown() {
         try {

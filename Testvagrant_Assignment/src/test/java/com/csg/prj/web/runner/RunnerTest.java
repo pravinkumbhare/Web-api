@@ -10,9 +10,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @CucumberOptions(
-        features = "src/test/Cucumber/WeatherReport/WeatherTest.feature",
+        features = "src/test/Cucumber/WeatherReport",
         glue = {"com.csg.prj.web.main_glue"},
-        tags = {"@E2E"},
+//        tags = {"@E2E_API"},
         format = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty",
