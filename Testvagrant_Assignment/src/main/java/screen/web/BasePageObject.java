@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 import setupConfig.Constants;
 
 import java.io.FileInputStream;
@@ -44,12 +45,22 @@ public class BasePageObject {
      */
     public static void initialization() {
         try {
-            options = notificationPopup();
-            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\browserDriver\\chromedriver.exe");
-            driver = new ChromeDriver(options);
-            logger.info("Launching browser..");
-            driver.get(prop.getProperty("URL"));
-            logger.info("Open the site " + prop.getProperty("URL"));
+            if(prop.getProperty("BROWSER").equalsIgnoreCase("chrome")){
+                options = notificationPopup();
+                System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\browserDriver\\chromedriver.exe");
+                driver = new ChromeDriver(options);
+                logger.info("Launching browser..");
+                driver.get(prop.getProperty("URL"));
+                logger.info("Open the site " + prop.getProperty("URL"));
+
+            }else if(prop.getProperty("BROWSER").equalsIgnoreCase("firefox")){
+                //do some stuff
+            }else if(prop.getProperty("BROWSER").equalsIgnoreCase("edge")){
+                //do some stuff
+            } else {
+                Assert.fail("Please provide the valid browser name.");
+            }
+
         } catch (Exception e) {
             e.getStackTrace();
         }
@@ -72,8 +83,9 @@ public class BasePageObject {
         }
         return options;
     }
+/*
 
-      /*  ScreenFactory screenFactory = new ScreenFactory();
+    ScreenFactory screenFactory = new ScreenFactory();
     public WebSearchLocation webSearchLocation =
             screenFactory.getScreen(ScreenFactory.PLATFORM_WEB, ScreenFactory.SEARCH_LOCATION_SCREEN);
     public WebWeatherForecast webWeatherForecast =

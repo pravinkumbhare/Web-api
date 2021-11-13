@@ -6,6 +6,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
+import org.testng.annotations.*;
 import screen.web.BasePageObject;
 import screen.web.WebSearchLocation;
 import screen.web.WebWeatherForecast;
@@ -14,10 +15,10 @@ public class WeatherTestStepDefinition extends BasePageObject {
     WebSearchLocation webSearchLocation = new WebSearchLocation(driver);
     WebWeatherForecast webWeatherForecast = new WebWeatherForecast(driver);
 
-    @Before
+    /*@Before
     public void setUp(){
         initialization();
-    }
+    }*/
 
     @After
     public void tearDown() {
@@ -31,7 +32,7 @@ public class WeatherTestStepDefinition extends BasePageObject {
 
     @Given("^Flow till landing page$")
     public void flow_till_landing_page() throws Throwable {
-//        initialization();
+        initialization();
     }
 
     @Given("^Enter the city name in search location text box$")

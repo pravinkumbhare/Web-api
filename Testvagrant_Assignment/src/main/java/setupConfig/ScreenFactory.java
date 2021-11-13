@@ -1,9 +1,10 @@
 package setupConfig;
 
+import screen.web.BasePageObject;
 import screen.web.WebSearchLocation;
 import screen.web.WebWeatherForecast;
 
-public class ScreenFactory {
+public class ScreenFactory extends BasePageObject {
 
     public static final String SEARCH_LOCATION_SCREEN = "SEARCH_LOCATION_SCREEN";
     public static final String WEATHER_FORECAST_SCREEN = "WEATHER_FORECAST_SCREEN";
