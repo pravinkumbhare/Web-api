@@ -10,6 +10,9 @@ import org.testng.annotations.*;
 import screen.web.BasePageObject;
 import screen.web.WebSearchLocation;
 import screen.web.WebWeatherForecast;
+import setupConfig.TestListener;
+
+@Listeners(setupConfig.TestListener.class)
 
 public class WeatherTestStepDefinition extends BasePageObject {
     WebSearchLocation webSearchLocation = new WebSearchLocation(driver);

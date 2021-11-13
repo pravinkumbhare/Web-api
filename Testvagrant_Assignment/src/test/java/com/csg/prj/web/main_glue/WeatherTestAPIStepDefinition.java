@@ -6,13 +6,15 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.testng.annotations.Listeners;
 import screen.web.BasePageObject;
 import setupConfig.Constants;
 import setupConfig.Resources;
 
+@Listeners(setupConfig.TestListener.class)
+
 public class WeatherTestAPIStepDefinition extends BasePageObject {
     private static Response response;
-
 
     @Given("^I am an authorized user$")
     public void i_Am_An_Authorized_User() {
