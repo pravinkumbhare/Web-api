@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by pravin.kumbhare on 30-10-2021.
@@ -29,6 +31,7 @@ public class BasePageObject {
     FileInputStream fis;
     protected static Properties prop;
     protected static ChromeOptions options = null;
+    protected static int webTemperature, apiTemperature;
 
     public BasePageObject() {
         try {
@@ -229,6 +232,21 @@ public class BasePageObject {
                 logger.info("Please provide valid temperature conversion type : "+tempType);
         }
         return tempConversion;
+    }
+
+    protected String toFetchDataFromString(String pattern, By locator){
+        String fetchedData = "";
+        try{
+            Pattern p = Pattern.compile(pattern);
+            Matcher m = p.matcher(getText(locator));
+            while(m.find()) {
+                logger.info("Current Temperature in integer :"+ m.group(1));
+                fetchedData = fetchedData + m.group(1);
+            }
+        }catch (Exception e){
+            logger.info(e.getMessage());
+        }
+        return fetchedData;
     }
 
 }

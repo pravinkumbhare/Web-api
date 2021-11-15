@@ -4,7 +4,7 @@ import screen.abstractScreen.WeatherForecastAbstract;
 
 public class AndroidWeatherForecast implements WeatherForecastAbstract {
     @Override
-    public String getTempForSelectedCity() {
-        return null;
+    public int getTempForSelectedCity() {
+        return 0;
     }
 }

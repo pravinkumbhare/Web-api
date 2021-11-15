@@ -5,5 +5,5 @@ package screen.abstractScreen;
  */
 public interface WeatherForecastAbstract {
 
-    public abstract String getTempForSelectedCity();
+    public abstract int getTempForSelectedCity();
 }

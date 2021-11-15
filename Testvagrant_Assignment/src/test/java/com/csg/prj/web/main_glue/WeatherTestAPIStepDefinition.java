@@ -6,6 +6,7 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import screen.web.BasePageObject;
 import setupConfig.Constants;
@@ -41,7 +42,9 @@ public class WeatherTestAPIStepDefinition extends BasePageObject {
                 JsonPath jsonPath = new JsonPath(response.asString());
                 String temp = jsonPath.getString("main.temp");
                 logger.info("Temperature is "+temp);
-                temperatureConversion(Constants.TEMPERATURE_TYPE, temp);
+                apiTemperature = (int) temperatureConversion(Constants.TEMPERATURE_TYPE, temp);
+                Assert.assertNotNull(apiTemperature, "API weather temperature is not visible.");
+                logger.info("API Temperature is : "+ apiTemperature);
             }
         }catch (Exception e){
             logger.error(e.getMessage());
