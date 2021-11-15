@@ -33,15 +33,15 @@ public class ScreenFactory extends BasePageObject {
     } else if(platform.equalsIgnoreCase(ANDROID) && screenName.equalsIgnoreCase(SEARCH_LOCATION_SCREEN)){
 
         //Not Applicable
-        System.out.println("Not Applicable");
+        logger.info("Not Applicable");
 
     }else if(platform.equalsIgnoreCase(IOS) && screenName.equalsIgnoreCase(SEARCH_LOCATION_SCREEN)){
 
         //Not Applicable
-        System.out.println("Not Applicable");
+        logger.info("Not Applicable");
 
     }else{
-        System.out.println("Invalid Platform");
+        logger.info("Invalid Platform");
     }
         return null;
     }

@@ -34,12 +34,12 @@ public class WebWeatherForecast extends BasePageObject implements WeatherForecas
      * @since 09.11.2021
      */
     @Override
-    public int getTempForSelectedCity() {
+    public int getTemperatureForSelectedCity() {
         try{
             waitForElementToPresent(Element.currentTemp.locator, 10);
             logger.info("Current Temperature is : "+ getText(Element.currentTemp.locator));
 
-            return Integer.valueOf( toFetchDataFromString("(\\d+)",Element.currentTemp.locator));
+            return Integer.valueOf( fetchDataFromString("(\\d+)",Element.currentTemp.locator));
         }catch (Exception e){
             logger.error(e.getMessage());
         }

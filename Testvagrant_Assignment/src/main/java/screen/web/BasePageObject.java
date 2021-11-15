@@ -48,6 +48,7 @@ public class BasePageObject {
      */
     public static void initialization() {
         try {
+            logger.info("Selecting the browser.");
             if(prop.getProperty("BROWSER").equalsIgnoreCase("chrome")){
                 options = notificationPopup();
                 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\browserDriver\\chromedriver.exe");
@@ -209,10 +210,16 @@ public class BasePageObject {
         try{
             driver.manage().timeouts().implicitlyWait(timeInSeconds, TimeUnit.SECONDS);
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            logger.info(e.getMessage());
         }
     }
 
+    /**
+     * This method is used to convert temperature from Fahrenheit to Celsius and vise-versa.
+     * @param tempType type of input temperature needs to convert
+     * @param temp is temperature
+     * @return float value
+     */
     public float temperatureConversion(String tempType, String temp){
         float Fahrenheit, Celsius, tempConversion;
         tempConversion = Float.parseFloat(temp);
@@ -234,7 +241,13 @@ public class BasePageObject {
         return tempConversion;
     }
 
-    protected String toFetchDataFromString(String pattern, By locator){
+    /**
+     * This method is used to fetch specific pattern of data from the given String.
+     * @param pattern in which pattern we need the data.
+     * @param locator from which webElement
+     * @return
+     */
+    protected String fetchDataFromString(String pattern, By locator){
         String fetchedData = "";
         try{
             Pattern p = Pattern.compile(pattern);

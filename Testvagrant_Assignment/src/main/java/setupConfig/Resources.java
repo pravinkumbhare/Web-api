@@ -9,7 +9,7 @@ import screen.web.BasePageObject;
 public class Resources extends BasePageObject {
     static String resource;
 
-    public static String getReadResourceData(){
+    public static String getResourceData(){
         try {
             resource = prop.getProperty("RESOURCE");
 

@@ -1,6 +1,5 @@
 package com.csg.prj.web.runner;
 
-
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.CucumberFeatureWrapper;
 import cucumber.api.testng.TestNGCucumberRunner;
@@ -24,7 +23,7 @@ public class RunnerTest {
         private TestNGCucumberRunner testNGCucumberRunner;
 
         @BeforeClass(alwaysRun = true)
-        public void setUpClass() throws Exception {
+        public void setUpClass() {
                 testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
         }
 
@@ -39,7 +38,7 @@ public class RunnerTest {
         }
 
         @AfterClass(alwaysRun = true)
-        public void tearDownClass() throws Exception {
+        public void tearDownClass() {
                 testNGCucumberRunner.finish();
         }
 

@@ -51,9 +51,9 @@ public class WeatherTestStepDefinition extends BasePageObject {
 
     @Then("^Verify the temperature of the city selected$")
     public void verify_the_temperature_of_the_city_selected() throws Throwable {
-        webTemperature = webWeatherForecast.getTempForSelectedCity();
+        webTemperature = webWeatherForecast.getTemperatureForSelectedCity();
         Assert.assertNotNull(webTemperature, "Web/UI Weather temperature is not visible.");
-        logger.info("Web/UI Weather temperature is : "+ webWeatherForecast.getTempForSelectedCity());
+        logger.info("Web/UI Weather temperature is : "+ webWeatherForecast.getTemperatureForSelectedCity());
     }
 
 }

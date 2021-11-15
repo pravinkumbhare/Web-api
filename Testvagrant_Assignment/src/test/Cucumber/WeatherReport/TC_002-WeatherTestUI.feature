@@ -1,4 +1,4 @@
-@E2E
+@E2E_WEB
 Feature: Weather Functionality to check city temperature
 
   Background:
