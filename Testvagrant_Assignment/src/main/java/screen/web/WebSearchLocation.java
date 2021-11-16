@@ -41,8 +41,8 @@ public class WebSearchLocation extends BasePageObject implements SearchLocationA
     public boolean searchLocation() {
         boolean isEntered = false;
         try {
-            waitForElementToPresent(Element.searchLocation.locator, Constants.timeInSeconds);
-            isEntered = enterTextIntoTextBox(Element.searchLocation.locator, Constants.cityName);
+            waitForElementToPresent(Element.searchLocation.locator, Constants.TIME_IN_SECONDS);
+            isEntered = enterTextIntoTextBox(Element.searchLocation.locator, Constants.CITY_NAME);
 
         }catch (Exception e){
             logger.error(e.getMessage());
@@ -63,7 +63,8 @@ public class WebSearchLocation extends BasePageObject implements SearchLocationA
             List<WebElement> listOfSearchedCity = listOfWebElements(Element.listOfSearchedCity.locator);
             for (WebElement cityName : listOfSearchedCity) {
                 logger.info("City Name : "+cityName.getText());
-                if(cityName.getText().contains(Constants.state)){
+
+                if(cityName.getText().contains(Constants.STATE)){
                     logger.info("City : "+ cityName.getText());
                     cityName.click();
                     isSearched = true;

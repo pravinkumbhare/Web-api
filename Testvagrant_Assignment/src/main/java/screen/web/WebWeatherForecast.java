@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import screen.abstractScreen.WeatherForecastAbstract;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by pravin.kumbhare on 30-10-2021.
  */
@@ -31,15 +34,16 @@ public class WebWeatherForecast extends BasePageObject implements WeatherForecas
      * @since 09.11.2021
      */
     @Override
-    public String getTempForSelectedCity() {
+    public int getTemperatureForSelectedCity() {
         try{
             waitForElementToPresent(Element.currentTemp.locator, 10);
-            logger.info("current Temperature is : "+ getText(Element.currentTemp.locator));
-            return getText(Element.currentTemp.locator);
+            logger.info("Current Temperature is : "+ getText(Element.currentTemp.locator));
 
+            return Integer.valueOf( fetchDataFromString("(\\d+)",Element.currentTemp.locator));
         }catch (Exception e){
             logger.error(e.getMessage());
         }
-        return null;
+        return 0;
     }
+
 }

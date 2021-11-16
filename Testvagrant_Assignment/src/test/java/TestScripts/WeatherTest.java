@@ -25,7 +25,7 @@ public class WeatherTest extends BasePageObject {
         Assert.assertTrue(webSearchLocation.searchLocation(), "Not able to enter/search the location.");
         Assert.assertTrue(webSearchLocation.selectCityFromTheListAppeared(),
                 "Unable to select city name from the dropdown list appeared.");
-        Assert.assertNotNull(webWeatherForecast.getTempForSelectedCity(), "Forecast temperature is not visible.");
+        Assert.assertNotNull(webWeatherForecast.getTemperatureForSelectedCity(), "Forecast temperature is not visible.");
     }
 
     @AfterMethod

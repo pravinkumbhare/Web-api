@@ -1,9 +1,10 @@
 package setupConfig;
 
+import screen.web.BasePageObject;
 import screen.web.WebSearchLocation;
 import screen.web.WebWeatherForecast;
 
-public class ScreenFactory {
+public class ScreenFactory extends BasePageObject {
 
     public static final String SEARCH_LOCATION_SCREEN = "SEARCH_LOCATION_SCREEN";
     public static final String WEATHER_FORECAST_SCREEN = "WEATHER_FORECAST_SCREEN";
@@ -30,17 +31,13 @@ public class ScreenFactory {
         return (Screen) webWeatherForecast;
 
     } else if(platform.equalsIgnoreCase(ANDROID) && screenName.equalsIgnoreCase(SEARCH_LOCATION_SCREEN)){
-
-        //Not Applicable
-        System.out.println("Not Applicable");
+        logger.info("Not Applicable");
 
     }else if(platform.equalsIgnoreCase(IOS) && screenName.equalsIgnoreCase(SEARCH_LOCATION_SCREEN)){
-
-        //Not Applicable
-        System.out.println("Not Applicable");
+        logger.info("Not Applicable");
 
     }else{
-        System.out.println("Invalid Platform");
+        logger.info("Invalid Platform");
     }
         return null;
     }

@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import org.testng.Assert;
 import setupConfig.Constants;
 
 import java.io.FileInputStream;
@@ -17,6 +19,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 /**
  * Created by pravin.kumbhare on 30-10-2021.
@@ -28,6 +34,8 @@ public class BasePageObject {
     FileInputStream fis;
     protected static Properties prop;
     protected static ChromeOptions options = null;
+    protected static int webTemperature, apiTemperature;
+
 
     public BasePageObject() {
         try {
@@ -44,12 +52,23 @@ public class BasePageObject {
      */
     public static void initialization() {
         try {
-            options = notificationPopup();
-            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\browserDriver\\chromedriver.exe");
-            driver = new ChromeDriver(options);
-            logger.info("Launching browser..");
-            driver.get(prop.getProperty("URL"));
-            logger.info("Open the site " + prop.getProperty("URL"));
+            logger.info("Selecting the browser.");
+            if(prop.getProperty("BROWSER").equalsIgnoreCase("chrome")){
+                options = notificationPopup();
+                System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\browserDriver\\chromedriver.exe");
+                driver = new ChromeDriver(options);
+                logger.info("Launching browser..");
+                driver.get(prop.getProperty("URL"));
+                logger.info("Open the site " + prop.getProperty("URL"));
+
+            }else if(prop.getProperty("BROWSER").equalsIgnoreCase("firefox")){
+                //do some stuff
+            }else if(prop.getProperty("BROWSER").equalsIgnoreCase("edge")){
+                //do some stuff
+            } else {
+                Assert.fail("Please provide the valid browser name.");
+            }
+
         } catch (Exception e) {
             e.getStackTrace();
         }
@@ -74,6 +93,11 @@ public class BasePageObject {
     }
 
       /*  ScreenFactory screenFactory = new ScreenFactory();
+=======
+/*
+
+    ScreenFactory screenFactory = new ScreenFactory();
+>>>>>>> praveen
     public WebSearchLocation webSearchLocation =
             screenFactory.getScreen(ScreenFactory.PLATFORM_WEB, ScreenFactory.SEARCH_LOCATION_SCREEN);
     public WebWeatherForecast webWeatherForecast =
@@ -117,7 +141,7 @@ public class BasePageObject {
     public boolean enterTextIntoTextBox(final By locator, String textData) {
         boolean isTextEntered = false;
         try {
-            waitForElementToPresent(locator, Constants.timeInSeconds);
+            waitForElementToPresent(locator, Constants.TIME_IN_SECONDS);
             webElement(locator).clear();
             webElement(locator).sendKeys(textData);
             isTextEntered = true;
@@ -194,8 +218,56 @@ public class BasePageObject {
         try{
             driver.manage().timeouts().implicitlyWait(timeInSeconds, TimeUnit.SECONDS);
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            logger.info(e.getMessage());
         }
+    }
+
+    /**
+     * This method is used to convert temperature from Fahrenheit to Celsius and vise-versa.
+     * @param tempType type of input temperature needs to convert
+     * @param temp is temperature
+     * @return float value
+     */
+    public float temperatureConversion(String tempType, String temp){
+        float Fahrenheit, Celsius, tempConversion;
+        tempConversion = Float.parseFloat(temp);
+
+        switch(tempType) {
+            case "FahrenheitToCelsius":
+                Celsius = ((tempConversion-32)*5)/9;
+                logger.info("Temperature in degree celsius is: "+Celsius);
+                tempConversion = Celsius;
+                break;
+            case "CelsiusToFahrenheit":
+                Fahrenheit =((tempConversion*9)/5)+32;
+                logger.info("Temperature in Fahrenheit is: "+Fahrenheit);
+                tempConversion = Fahrenheit;
+                break;
+            default:
+                logger.info("Please provide valid temperature conversion type : "+tempType);
+        }
+        return tempConversion;
+    }
+
+    /**
+     * This method is used to fetch specific pattern of data from the given String.
+     * @param pattern in which pattern we need the data.
+     * @param locator from which webElement
+     * @return
+     */
+    protected String fetchDataFromString(String pattern, By locator){
+        String fetchedData = "";
+        try{
+            Pattern p = Pattern.compile(pattern);
+            Matcher m = p.matcher(getText(locator));
+            while(m.find()) {
+                logger.info("Current Temperature in integer :"+ m.group(1));
+                fetchedData = fetchedData + m.group(1);
+            }
+        }catch (Exception e){
+            logger.info(e.getMessage());
+        }
+        return fetchedData;
     }
 
 }

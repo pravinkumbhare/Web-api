@@ -4,7 +4,7 @@ import screen.abstractScreen.WeatherForecastAbstract;
 
 public class IOSWeatherForecast implements WeatherForecastAbstract {
     @Override
-    public String getTempForSelectedCity() {
-        return null;
+    public int getTemperatureForSelectedCity() {
+        return 0;
     }
 }
