@@ -1,11 +1,11 @@
-package pageobject.web;
+package pageobjects.web;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import pageobject.abstractpage.SearchLocationAbstract;
-import setupConfig.Constants;
+import pageobjects.abstractpage.SearchLocationAbstract;
+import config.Constants;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package setupConfig;
+package config;
 
 import org.testng.Assert;
-import pageobject.web.BasePageObject;
+import pageobjects.web.BasePageObject;
 
 /**
  * Created by pravin.kumbhare on 12.11.2021

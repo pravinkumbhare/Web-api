@@ -1,8 +1,8 @@
 package factory;
 
-import pageobject.web.BasePageObject;
-import pageobject.web.WebSearchLocation;
-import pageobject.web.WebWeatherForecast;
+import pageobjects.web.BasePageObject;
+import pageobjects.web.WebSearchLocation;
+import pageobjects.web.WebWeatherForecast;
 
 public class PageFactory extends BasePageObject {
 

@@ -1,6 +1,6 @@
-package pageobject.ios;
+package pageobjects.ios;
 
-import pageobject.abstractpage.WeatherForecastAbstract;
+import pageobjects.abstractpage.WeatherForecastAbstract;
 
 public class IOSWeatherForecast implements WeatherForecastAbstract {
     @Override

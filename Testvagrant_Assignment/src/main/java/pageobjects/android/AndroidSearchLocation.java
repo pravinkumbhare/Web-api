@@ -1,6 +1,6 @@
-package pageobject.android;
+package pageobjects.android;
 
-import pageobject.abstractpage.SearchLocationAbstract;
+import pageobjects.abstractpage.SearchLocationAbstract;
 
 public class AndroidSearchLocation implements SearchLocationAbstract {
     @Override

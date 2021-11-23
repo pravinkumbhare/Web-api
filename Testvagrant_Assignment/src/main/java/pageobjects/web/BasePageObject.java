@@ -1,4 +1,4 @@
-package pageobject.web;
+package pageobjects.web;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import setupConfig.Constants;
+import config.Constants;
 
 import java.io.FileInputStream;
 import java.io.IOException;

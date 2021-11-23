@@ -1,9 +1,9 @@
-package pageobject.web;
+package pageobjects.web;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import pageobject.abstractpage.WeatherForecastAbstract;
+import pageobjects.abstractpage.WeatherForecastAbstract;
 
 /**
  * Created by pravin.kumbhare on 30-10-2021.

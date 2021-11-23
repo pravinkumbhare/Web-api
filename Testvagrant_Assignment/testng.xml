@@ -10,7 +10,7 @@
     <test name="Assignment" annotations="JDK"
           preserve-order="true">
         <classes>
-            <class name="com.csg.prj.web.runner.RunnerTest"/>
+            <class name="com.csg.prj.runner.RunnerTest" />
         </classes>
     </test>
 </suite>

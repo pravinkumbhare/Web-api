@@ -1,4 +1,4 @@
-package com.csg.prj.web.runner;
+package com.csg.prj.runner;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.CucumberFeatureWrapper;
@@ -9,9 +9,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @CucumberOptions(
-        features = "src/test/Cucumber/WeatherReport",
-        glue = {"com.csg.prj.web.main_glue"},
-//        tags = {"@E2E_API"},
+        features = "src/test/features/TC_001-WeatherTempTest.feature",
+        glue = {"com.csg.prj.stepdefinition"},
+        tags = {"@E2E"},
         format = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty",

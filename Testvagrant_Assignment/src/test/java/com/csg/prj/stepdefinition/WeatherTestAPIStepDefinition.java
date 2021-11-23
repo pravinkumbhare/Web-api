@@ -1,5 +1,6 @@
-package com.csg.prj.web.main_glue;
+package com.csg.prj.stepdefinition;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import io.restassured.RestAssured;
@@ -8,10 +9,10 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
-import pageobject.web.BasePageObject;
-import setupConfig.Constants;
-import setupConfig.Resources;
-import setupConfig.weather;
+import pageobjects.web.BasePageObject;
+import config.Constants;
+import config.Resources;
+import config.weather;
 
 @Listeners(listener.TestListener.class)
 
@@ -27,7 +28,7 @@ public class WeatherTestAPIStepDefinition extends BasePageObject {
         request.queryParam("appid", prop.getProperty("KEY"));
     }
 
-    @Given("^Search the city name to check the temperature$")
+    @And("^Search the city name to check the temperature$")
     public void search_The_City_Name_To_Check_The_Temperature() {
         request.queryParam("q", Constants.CITY_NAME);
         response = request.get(Resources.getResourceData());
@@ -35,8 +36,8 @@ public class WeatherTestAPIStepDefinition extends BasePageObject {
         logger.info("jsonString : " + jsonString);
     }
 
-    @Then("^Verify the temperature of the city$")
-    public void verify_The_Temperature_Of_The_City() {
+    @And("^Check the temperature of the city$")
+    public void check_The_Temperature_Of_The_City() {
         try {
             if (response.getStatusCode() == Constants.STATUS_CODE_SUCCESS) {
 

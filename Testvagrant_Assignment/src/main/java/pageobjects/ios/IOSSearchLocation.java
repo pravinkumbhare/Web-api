@@ -1,6 +1,6 @@
-package pageobject.ios;
+package pageobjects.ios;
 
-import pageobject.abstractpage.SearchLocationAbstract;
+import pageobjects.abstractpage.SearchLocationAbstract;
 
 public class IOSSearchLocation implements SearchLocationAbstract {
     @Override

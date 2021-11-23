@@ -1,6 +1,6 @@
-package pageobject.android;
+package pageobjects.android;
 
-import pageobject.abstractpage.WeatherForecastAbstract;
+import pageobjects.abstractpage.WeatherForecastAbstract;
 
 public class AndroidWeatherForecast implements WeatherForecastAbstract {
     @Override
