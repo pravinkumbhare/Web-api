@@ -1,6 +1,6 @@
-package screen.ios;
+package pageobject.ios;
 
-import screen.abstractScreen.SearchLocationAbstract;
+import pageobject.abstractpage.SearchLocationAbstract;
 
 public class IOSSearchLocation implements SearchLocationAbstract {
     @Override

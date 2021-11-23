@@ -1,9 +1,10 @@
 package setupConfig;
 
-import screen.web.BasePageObject;
+import pageobject.web.BasePageObject;
+
 import java.util.Comparator;
 
-public class tempComparator extends BasePageObject implements Comparator<weather> {
+public class TempComparator extends BasePageObject implements Comparator<weather> {
 
     @Override
     public int compare(weather o1, weather o2) {

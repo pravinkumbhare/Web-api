@@ -1,7 +1,7 @@
 package setupConfig;
 
 import org.testng.Assert;
-import screen.web.BasePageObject;
+import pageobject.web.BasePageObject;
 
 /**
  * Created by pravin.kumbhare on 12.11.2021
@@ -9,16 +9,16 @@ import screen.web.BasePageObject;
 public class Resources extends BasePageObject {
     static String resource;
 
-    public static String getResourceData(){
+    public static String getResourceData() {
         try {
             resource = prop.getProperty("RESOURCE");
 
-            if(!resource.isEmpty()){
-                logger.info("Provided resource is : "+ resource);
-            }else {
-                Assert.fail("Please check the provided resource : "+resource);
+            if (!resource.isEmpty()) {
+                logger.info("Provided resource is : " + resource);
+            } else {
+                Assert.fail("Please check the provided resource : " + resource);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.info(e.getMessage());
         }
         return resource;

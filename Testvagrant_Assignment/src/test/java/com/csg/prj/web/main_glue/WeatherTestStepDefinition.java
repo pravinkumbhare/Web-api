@@ -1,18 +1,16 @@
 package com.csg.prj.web.main_glue;
 
 import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import screen.web.BasePageObject;
-import screen.web.WebSearchLocation;
-import screen.web.WebWeatherForecast;
-import setupConfig.TestListener;
+import pageobject.web.BasePageObject;
+import pageobject.web.WebSearchLocation;
+import pageobject.web.WebWeatherForecast;
 
-@Listeners(setupConfig.TestListener.class)
+@Listeners(listener.TestListener.class)
 
 public class WeatherTestStepDefinition extends BasePageObject {
     WebSearchLocation webSearchLocation = new WebSearchLocation(driver);
@@ -27,7 +25,9 @@ public class WeatherTestStepDefinition extends BasePageObject {
     public void tearDown() {
         try {
             logger.info("Closing browser...");
-            if (driver != null) {driver.close();}
+            if (driver != null) {
+                driver.close();
+            }
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
@@ -53,7 +53,7 @@ public class WeatherTestStepDefinition extends BasePageObject {
     public void verify_the_temperature_of_the_city_selected() throws Throwable {
         webTemperature = webWeatherForecast.getTemperatureForSelectedCity();
         Assert.assertNotNull(webTemperature, "Web/UI Weather temperature is not visible.");
-        logger.info("Web/UI Weather temperature is : "+ webWeatherForecast.getTemperatureForSelectedCity());
+        logger.info("Web/UI Weather temperature is : " + webWeatherForecast.getTemperatureForSelectedCity());
     }
 
 }

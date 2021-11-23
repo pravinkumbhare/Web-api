@@ -1,4 +1,4 @@
-package screen.abstractScreen;
+package pageobject.abstractpage;
 
 /**
  * Created by pravin.kumbhare on 30-10-2021.

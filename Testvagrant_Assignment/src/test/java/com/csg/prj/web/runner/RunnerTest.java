@@ -17,29 +17,29 @@ import org.testng.annotations.Test;
                 "html:target/cucumber-reports/cucumber-pretty",
                 "json:target/cucumber-reports/CucumberTestReport.json",
                 "rerun:target/cucumber-reports/rerun.txt"
-        },plugin = "json:target/cucumber-reports/CucumberTestReport.json")
+        }, plugin = "json:target/cucumber-reports/CucumberTestReport.json")
 
 public class RunnerTest {
-        private TestNGCucumberRunner testNGCucumberRunner;
+    private TestNGCucumberRunner testNGCucumberRunner;
 
-        @BeforeClass(alwaysRun = true)
-        public void setUpClass() {
-                testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
-        }
+    @BeforeClass(alwaysRun = true)
+    public void setUpClass() {
+        testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
+    }
 
-        @Test(groups = "cucumber", description = "Runs Cucumber Feature", dataProvider = "features")
-        public void feature(CucumberFeatureWrapper cucumberFeature) {
-                testNGCucumberRunner.runCucumber(cucumberFeature.getCucumberFeature());
-        }
+    @Test(groups = "cucumber", description = "Runs Cucumber Feature", dataProvider = "features")
+    public void feature(CucumberFeatureWrapper cucumberFeature) {
+        testNGCucumberRunner.runCucumber(cucumberFeature.getCucumberFeature());
+    }
 
-        @DataProvider
-        public Object[][] features() {
-                return testNGCucumberRunner.provideFeatures();
-        }
+    @DataProvider
+    public Object[][] features() {
+        return testNGCucumberRunner.provideFeatures();
+    }
 
-        @AfterClass(alwaysRun = true)
-        public void tearDownClass() {
-                testNGCucumberRunner.finish();
-        }
+    @AfterClass(alwaysRun = true)
+    public void tearDownClass() {
+        testNGCucumberRunner.finish();
+    }
 
 }

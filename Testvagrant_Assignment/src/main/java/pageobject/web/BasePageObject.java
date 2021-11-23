@@ -1,4 +1,4 @@
-package screen.web;
+package pageobject.web;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -36,7 +36,7 @@ public class BasePageObject {
     public BasePageObject() {
         try {
             prop = new Properties();
-            fis = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\resources\\environment.properties");
+            fis = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\environment.properties");
             prop.load(fis);
         } catch (IOException e) {
             e.printStackTrace();
@@ -49,7 +49,7 @@ public class BasePageObject {
     public static void initialization() {
         try {
             logger.info("Selecting the browser.");
-            if(prop.getProperty("BROWSER").equalsIgnoreCase("chrome")){
+            if (prop.getProperty("BROWSER").equalsIgnoreCase("chrome")) {
                 options = notificationPopup();
                 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\browserDriver\\chromedriver.exe");
                 driver = new ChromeDriver(options);
@@ -57,9 +57,9 @@ public class BasePageObject {
                 driver.get(prop.getProperty("URL"));
                 logger.info("Open the site " + prop.getProperty("URL"));
 
-            }else if(prop.getProperty("BROWSER").equalsIgnoreCase("firefox")){
+            } else if (prop.getProperty("BROWSER").equalsIgnoreCase("firefox")) {
                 //do some stuff
-            }else if(prop.getProperty("BROWSER").equalsIgnoreCase("edge")){
+            } else if (prop.getProperty("BROWSER").equalsIgnoreCase("edge")) {
                 //do some stuff
             } else {
                 Assert.fail("Please provide the valid browser name.");
@@ -98,6 +98,7 @@ public class BasePageObject {
 
     /**
      * This method is used to return webElement
+     *
      * @param locator is used to pass locator of webElement
      * @return WebElement
      */
@@ -107,6 +108,7 @@ public class BasePageObject {
 
     /**
      * This method is used to read the text from the specific webElement
+     *
      * @param locator is used to pass locator of webElement
      * @return String
      */
@@ -116,6 +118,7 @@ public class BasePageObject {
 
     /**
      * This method is used to get the list of WebElements
+     *
      * @param locator is used to pass locator of webElement
      * @return List<WebElement>
      * @since 08.11.2021
@@ -126,7 +129,8 @@ public class BasePageObject {
 
     /**
      * This method is used to enter data into text field.
-     * @param locator is used to pass locator of webElement
+     *
+     * @param locator  is used to pass locator of webElement
      * @param textData is used to pass data into textField
      * @since 09.11.2021
      */
@@ -145,7 +149,8 @@ public class BasePageObject {
 
     /**
      * This method is used to wait till the webElement to be visible
-     * @param locator is used to pass locator of webElement
+     *
+     * @param locator         is used to pass locator of webElement
      * @param timeOutInSecond is used to specify time
      * @since 09.11.2021
      */
@@ -203,60 +208,63 @@ public class BasePageObject {
 
     /**
      * This method is used to wait for a specific time
+     *
      * @param timeInSeconds is used to specify time
      * @since 09.11.2021
      */
-    public void implicitWait(long timeInSeconds){
-        try{
+    public void implicitWait(long timeInSeconds) {
+        try {
             driver.manage().timeouts().implicitlyWait(timeInSeconds, TimeUnit.SECONDS);
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.info(e.getMessage());
         }
     }
 
     /**
      * This method is used to convert temperature from Fahrenheit to Celsius and vise-versa.
+     *
      * @param tempType type of input temperature needs to convert
-     * @param temp is temperature
+     * @param temp     is temperature
      * @return float value
      */
-    public float temperatureConversion(String tempType, String temp){
+    public float temperatureConversion(String tempType, String temp) {
         float Fahrenheit, Celsius, tempConversion;
         tempConversion = Float.parseFloat(temp);
 
-        switch(tempType) {
+        switch (tempType) {
             case "FahrenheitToCelsius":
-                Celsius = ((tempConversion-32)*5)/9;
-                logger.info("Temperature in degree celsius is: "+Celsius);
+                Celsius = ((tempConversion - 32) * 5) / 9;
+                logger.info("Temperature in degree celsius is: " + Celsius);
                 tempConversion = Celsius;
                 break;
             case "CelsiusToFahrenheit":
-                Fahrenheit =((tempConversion*9)/5)+32;
-                logger.info("Temperature in Fahrenheit is: "+Fahrenheit);
+                Fahrenheit = ((tempConversion * 9) / 5) + 32;
+                logger.info("Temperature in Fahrenheit is: " + Fahrenheit);
                 tempConversion = Fahrenheit;
                 break;
             default:
-                logger.info("Please provide valid temperature conversion type : "+tempType);
+                logger.info("Please provide valid temperature conversion type : " + tempType);
         }
         return tempConversion;
     }
 
     /**
      * This method is used to fetch specific pattern of data from the given String.
+     *
      * @param pattern in which pattern we need the data.
      * @param locator from which webElement
      * @return
      */
-    protected String fetchDataFromString(String pattern, By locator){
+    protected String fetchDataFromString(String pattern, By locator) {
         String fetchedData = "";
-        try{
+        try {
             Pattern p = Pattern.compile(pattern);
             Matcher m = p.matcher(getText(locator));
-            while(m.find()) {
-                logger.info("Current Temperature in integer :"+ m.group(1));
+            while (m.find()) {
+                logger.info("Current Temperature in integer :" + m.group(1));
                 fetchedData = fetchedData + m.group(1);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.info(e.getMessage());
         }
         return fetchedData;
