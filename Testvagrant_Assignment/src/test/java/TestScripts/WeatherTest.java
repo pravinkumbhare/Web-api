@@ -4,9 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import screen.web.BasePageObject;
-import screen.web.WebSearchLocation;
-import screen.web.WebWeatherForecast;
+import pageobjects.web.BasePageObject;
+import pageobjects.web.WebSearchLocation;
+import pageobjects.web.WebWeatherForecast;
 
 public class WeatherTest extends BasePageObject {
     WebSearchLocation webSearchLocation = new WebSearchLocation(driver);
