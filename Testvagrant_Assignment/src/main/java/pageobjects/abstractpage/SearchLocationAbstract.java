@@ -1,4 +1,4 @@
-package screen.abstractScreen;
+package pageobjects.abstractpage;
 
 /**
  * Created by pravin.kumbhare on 30-10-2021.
@@ -6,5 +6,6 @@ package screen.abstractScreen;
 public interface SearchLocationAbstract {
 
     public abstract boolean searchLocation();
+
     public abstract boolean selectCityFromTheListAppeared();
 }

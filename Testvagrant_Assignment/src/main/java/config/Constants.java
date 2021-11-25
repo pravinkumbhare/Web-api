@@ -1,4 +1,4 @@
-package setupConfig;
+package config;
 
 /**
  * Created by pravin.kumbhare on 30-10-2021.

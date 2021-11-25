@@ -1,27 +1,26 @@
-package setupConfig;
+package config;
 
-import screen.web.BasePageObject;
+import pageobjects.web.BasePageObject;
+
 import java.util.Comparator;
 
-public class tempComparator extends BasePageObject implements Comparator<weather> {
+public class TempComparator extends BasePageObject implements Comparator<weather> {
 
     @Override
     public int compare(weather o1, weather o2) {
         try {
             if (o1.temp == o2.temp) {
-                logger.info("Weather temperature from two platform UI and API is matching.");
+                logger.info("Weather temperature from two platform UI: "+ o2.temp +"and API: "+ o1.temp +" is matching.");
                 return 0;
 
             } else {
-                CustomException.validate(o1, o2);
+                CustomException.throwException(o1, o2);
                 return -1;
             }
 
         } catch (WeatherTemperatureNotMatchException ex) {
             logger.info("Caught the exception");
-
-            // printing the message from InvalidAgeException object
-            logger.info("Exception is : " + ex);
+            ex.printStackTrace();
         }
         return -1;
     }
@@ -43,13 +42,12 @@ public class tempComparator extends BasePageObject implements Comparator<weather
     public static class CustomException {
 
         // method to compare weather
-        static void validate(weather temp1, weather temp2) throws WeatherTemperatureNotMatchException {
-            if (temp1 != temp2) {
+        static void throwException(weather obj1, weather obj2) throws WeatherTemperatureNotMatchException {
+            if (obj1.temp != obj2.temp) {
 
                 logger.info("Throwing an object of user defined exception.");
-                throw new WeatherTemperatureNotMatchException("Weather temperature from two platform UI and API is not matching.");
-            } else {
-                logger.info("Weather temperature from two platform UI and API is matching.");
+                throw new WeatherTemperatureNotMatchException("Weather temperature from two platform UI : "+ obj2.temp +" " +
+                        "and API : "+ obj1.temp +" is not matching.");
             }
         }
     }
